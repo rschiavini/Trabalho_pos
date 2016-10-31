@@ -19,7 +19,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 		// form de login customizado
 		http.formLogin().loginPage("/login")// URL COM O RETORNO DO JSP DE LOGIN
 
-				.defaultSuccessUrl("/produto/")// DEPOIS DO LOGIN VAI PARA ONDE?
+				.defaultSuccessUrl("/pedido/")// DEPOIS DO LOGIN VAI PARA ONDE?
 				.failureUrl("/login?error=bad_credentials") // SE FALHAR FAZ O
 															// QUE?
 				.permitAll();// PERMISSÃO DE ACESSO TOTAL AO LOGIN
