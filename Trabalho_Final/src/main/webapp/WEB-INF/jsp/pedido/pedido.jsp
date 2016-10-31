@@ -48,6 +48,7 @@
 								<h5 class="he">
 									<sec:authentication property="principal.username" />
 								</h5>
+								<p><label>Valor Total Pedido: <%= session.getAttribute( "valorTotal" ) %> </p>
 							</div>
 							<!-- Button -->
 							<div class="form-horizontal text-right">
