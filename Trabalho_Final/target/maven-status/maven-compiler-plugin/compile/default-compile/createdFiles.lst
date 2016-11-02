@@ -1,0 +1,12 @@
+br\edu\utfpr\spring\trab\controller\PedidoController.class
+br\edu\utfpr\spring\trab\repository\PedidoRepository.class
+br\edu\utfpr\spring\trab\repository\ProdutoRepository.class
+br\edu\utfpr\spring\trab\WebSecurityConfig.class
+br\edu\utfpr\spring\trab\controller\ProdutoController.class
+br\edu\utfpr\spring\trab\Main.class
+br\edu\utfpr\spring\trab\controller\LoginController.class
+br\edu\utfpr\spring\trab\repository\PedidoItemRepository.class
+br\edu\utfpr\spring\trab\model\Pedido.class
+br\edu\utfpr\spring\trab\model\Produto.class
+br\edu\utfpr\spring\trab\model\PedidoItem.class
+br\edu\utfpr\spring\trab\consts\StatusPedido.class

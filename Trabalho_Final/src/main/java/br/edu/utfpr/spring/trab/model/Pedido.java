@@ -22,9 +22,10 @@ public class Pedido {
 	
 	@NotEmpty(message="Informe o Status do Pedido")
 	@Column(length=10, nullable=false)
-	private String status;
-		
-	private Double valorTotal;
+	private String status;	
 	
+	@Column(length=50, nullable=false)
+	private String usuario;
+		
 
 }

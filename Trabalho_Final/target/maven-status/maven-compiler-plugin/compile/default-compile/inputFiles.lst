@@ -1,9 +1,11 @@
 E:\Pós\André Forchesatto - Framework para Desenvolvimento Web em Java\Trabalho_Final\src\main\java\br\edu\utfpr\spring\trab\model\PedidoItem.java
 E:\Pós\André Forchesatto - Framework para Desenvolvimento Web em Java\Trabalho_Final\src\main\java\br\edu\utfpr\spring\trab\repository\ProdutoRepository.java
 E:\Pós\André Forchesatto - Framework para Desenvolvimento Web em Java\Trabalho_Final\src\main\java\br\edu\utfpr\spring\trab\WebSecurityConfig.java
+E:\Pós\André Forchesatto - Framework para Desenvolvimento Web em Java\Trabalho_Final\src\main\java\br\edu\utfpr\spring\trab\consts\StatusPedido.java
 E:\Pós\André Forchesatto - Framework para Desenvolvimento Web em Java\Trabalho_Final\src\main\java\br\edu\utfpr\spring\trab\Main.java
 E:\Pós\André Forchesatto - Framework para Desenvolvimento Web em Java\Trabalho_Final\src\main\java\br\edu\utfpr\spring\trab\model\Pedido.java
 E:\Pós\André Forchesatto - Framework para Desenvolvimento Web em Java\Trabalho_Final\src\main\java\br\edu\utfpr\spring\trab\repository\PedidoRepository.java
+E:\Pós\André Forchesatto - Framework para Desenvolvimento Web em Java\Trabalho_Final\src\main\java\br\edu\utfpr\spring\trab\repository\PedidoItemRepository.java
 E:\Pós\André Forchesatto - Framework para Desenvolvimento Web em Java\Trabalho_Final\src\main\java\br\edu\utfpr\spring\trab\controller\LoginController.java
 E:\Pós\André Forchesatto - Framework para Desenvolvimento Web em Java\Trabalho_Final\src\main\java\br\edu\utfpr\spring\trab\model\Produto.java
 E:\Pós\André Forchesatto - Framework para Desenvolvimento Web em Java\Trabalho_Final\src\main\java\br\edu\utfpr\spring\trab\controller\PedidoController.java

@@ -7,8 +7,7 @@ import br.edu.utfpr.spring.trab.model.Pedido;
 
 public interface PedidoRepository extends JpaRepository<Pedido, Long> {
 
-	@Query("select p from Pedido p where p.status='Aberto'")
-	Pedido GetUltimoPedidoAberto();
-	
+	@Query("select p from Pedido p where p.status= 'Aberto'")
+	Pedido getUltimoPedidoAberto();
 
 }

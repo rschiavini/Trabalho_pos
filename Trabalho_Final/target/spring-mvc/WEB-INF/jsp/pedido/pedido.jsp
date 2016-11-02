@@ -38,7 +38,7 @@
 
 	<div class="container">
 		<div class="row">
-
+			<c:out value="${mensagemPedidoFechado}" />
 			<div class="col-md-10 col-md-offset-1">
 
 				<div class="panel panel-default panel-table">
@@ -48,6 +48,7 @@
 								<h5 class="he">
 									<sec:authentication property="principal.username" />
 								</h5>
+								<p>Valor Total Pedido: ${valorTotal}</p>
 							</div>
 							<!-- Button -->
 							<div class="form-horizontal text-right">
@@ -55,8 +56,8 @@
 								<div class="form-group">
 									<label class="col-md-6 text-right" for="btnFinalizar"></label>
 									<div class="col-md-5">
-										<button id="btnFinalizar" name="btnFinalizar"
-											class="btn btn-primary">Finalizar Compra</button>
+										<a href="/pedido/AtualizaStatusPedidoFechado"
+											class="btn btn-success">Finalizar Compra</a>
 									</div>
 								</div>
 
@@ -64,15 +65,16 @@
 								<div class="form-group">
 									<label class="col-md-6 text-right" for="btnCancelarCompra"></label>
 									<div class="col-md-5">
-										<button id="btnCancelarCompra" name="btnCancelarCompra"
-											class="btn btn-danger">Cancelar Compra</button>
+										<a href="/pedido/cancelarPedido" class="btn btn-danger">Cancelar
+											Compra</a>
 									</div>
 								</div>
 
 							</div>
 						</div>
 					</div>
-
+					<!--  		<form class="form-horizontal" action="<c:url value="/pedido/"/>"
+						method="post">-->
 					<div class="panel-body">
 						<table class="table table-striped table-bordered table-list">
 							<thead>
@@ -80,7 +82,8 @@
 									<th class="hidden-xs">Código</th>
 									<th>Nome</th>
 									<th>Valor</th>
-									<th><i class="glyphicon glyphicon-shopping-cart"></i></th>
+									<th width="50" align="center"><i
+										class="glyphicon glyphicon-shopping-cart"></i></th>
 								</tr>
 							</thead>
 							<tbody>
@@ -89,33 +92,16 @@
 										<td class="hidden-xs">${produto.codigo}</td>
 										<td>${produto.nome}</td>
 										<td>${produto.valor}</td>
-										<td align="center"><i>
-											href="<c:url value=""/>"
-											class="btn btn-default">Comprar</i>
-										</td>
+										<td align="center"><a
+											href="<c:url value="/pedido/adicionarProduto/${produto.codigo}"/>"
+											class="btn btn-default"> <i class="fa fa-cart-plus"></i>
+										</a></td>
 									</tr>
 								</c:forEach>
 							</tbody>
 						</table>
 					</div>
-					<div class="panel-footer">
-						<div class="row">
-							<div class="col col-xs-4">Page 1 of 5</div>
-							<div class="col col-xs-8">
-								<ul class="pagination hidden-xs pull-right">
-									<li><a href="#">1</a></li>
-									<li><a href="#">2</a></li>
-									<li><a href="#">3</a></li>
-									<li><a href="#">4</a></li>
-									<li><a href="#">5</a></li>
-								</ul>
-								<ul class="pagination visible-xs pull-right">
-									<li><a href="#"></a></li>
-									<li><a href="#"></a></li>
-								</ul>
-							</div>
-						</div>
-					</div>
+					<!-- </form> -->
 				</div>
 			</div>
 		</div>

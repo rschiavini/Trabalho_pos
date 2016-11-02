@@ -1,3 +1,4 @@
+<%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt"%>
 <%@ taglib uri="http://www.springframework.org/security/tags"
 	prefix="sec"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
@@ -38,7 +39,7 @@
 
 	<div class="container">
 		<div class="row">
-
+			<c:out value="${mensagemPedidoFechado}" />
 			<div class="col-md-10 col-md-offset-1">
 
 				<div class="panel panel-default panel-table">
@@ -48,7 +49,10 @@
 								<h5 class="he">
 									<sec:authentication property="principal.username" />
 								</h5>
-								<p><label>Valor Total Pedido: <%= session.getAttribute( "valorTotal" ) %> </p>
+								<p>
+									Valor Total Pedido:
+									<fmt:formatNumber value="${valorTotal}" type="currency" />									
+								</p>
 							</div>
 							<!-- Button -->
 							<div class="form-horizontal text-right">
@@ -56,8 +60,8 @@
 								<div class="form-group">
 									<label class="col-md-6 text-right" for="btnFinalizar"></label>
 									<div class="col-md-5">
-										<button id="btnFinalizar" name="btnFinalizar"
-											class="btn btn-primary">Finalizar Compra</button>
+										<a href="/pedido/AtualizaStatusPedidoFechado"
+											class="btn btn-success">Finalizar Compra</a>
 									</div>
 								</div>
 
@@ -65,15 +69,16 @@
 								<div class="form-group">
 									<label class="col-md-6 text-right" for="btnCancelarCompra"></label>
 									<div class="col-md-5">
-										<button id="btnCancelarCompra" name="btnCancelarCompra"
-											class="btn btn-danger">Cancelar Compra</button>
+										<a href="/pedido/cancelarPedido" class="btn btn-danger">Cancelar
+											Compra</a>
 									</div>
 								</div>
 
 							</div>
 						</div>
 					</div>
-
+					<!--  		<form class="form-horizontal" action="<c:url value="/pedido/"/>"
+						method="post">-->
 					<div class="panel-body">
 						<table class="table table-striped table-bordered table-list">
 							<thead>
@@ -92,7 +97,7 @@
 										<td>${produto.nome}</td>
 										<td>${produto.valor}</td>
 										<td align="center"><a
-											href="<c:url value="/produto/${produto.codigo}"/>"
+											href="<c:url value="/pedido/adicionarProduto/${produto.codigo}"/>"
 											class="btn btn-default"> <i class="fa fa-cart-plus"></i>
 										</a></td>
 									</tr>
@@ -100,6 +105,7 @@
 							</tbody>
 						</table>
 					</div>
+					<!-- </form> -->
 				</div>
 			</div>
 		</div>
