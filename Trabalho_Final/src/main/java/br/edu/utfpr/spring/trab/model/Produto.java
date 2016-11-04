@@ -28,5 +28,7 @@ public class Produto {
 	@NotNull
 	private Double valor;
 	
+	private String foto;
+	
 
 }

@@ -18,18 +18,12 @@ public class ProdutoController {
 
 	@Autowired
 	private ProdutoRepository produtoRepository;
-
-	// @Autowired
-	// private UsuarioLogado usuarioLogado;
+	
 
 	@GetMapping("/")
 	public String lista(Model model) {
 		List<Produto> produtos = produtoRepository.findAllEager();
 		model.addAttribute("produtos", produtos);
-
-		// usuarioLogado.get().ifPresent(usuario->{
-		// model.addAttribute("nomeUsuario", usuario.getNome());
-		// });
 
 		return "/produto/lista";
 	}

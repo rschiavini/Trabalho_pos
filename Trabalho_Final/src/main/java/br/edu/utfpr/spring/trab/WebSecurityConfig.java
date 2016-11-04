@@ -14,8 +14,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 		// O que deseja que autentique
 		// nesse para todos os request serão autenticados.
 		http.csrf().disable().authorizeRequests().anyRequest().authenticated();
-		// http.formLogin().loginPage("/login").defaultSuccessUrl("/");
-
+		
 		// form de login customizado
 		http.formLogin().loginPage("/login")// URL COM O RETORNO DO JSP DE LOGIN
 

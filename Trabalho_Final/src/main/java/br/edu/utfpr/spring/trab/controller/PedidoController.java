@@ -9,8 +9,8 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import br.edu.utfpr.spring.trab.consts.StatusPedido;
 import br.edu.utfpr.spring.trab.model.Pedido;
@@ -50,8 +50,7 @@ public class PedidoController {
 			pedidoRepository.save(ped);
 		}
 
-		model.addAttribute("pedidoCab", ped);
-
+		
 		Double valorTotal = pedidoItemRepository.getValorTotalPedido(ped);
 		model.addAttribute("valorTotal", valorTotal);
 
@@ -75,27 +74,30 @@ public class PedidoController {
 	}
 
 	@GetMapping("/cancelarPedido")
-	public String cancelarPedido() {
+	public String cancelarPedido(final RedirectAttributes redirectAttributes) {
 
 		Pedido ped = pedidoRepository.getUltimoPedidoAberto();
 
 		pedidoItemRepository.deletaItensPedido(ped);
 		pedidoRepository.delete(ped);
+		redirectAttributes.addFlashAttribute("pedidoCancelado", "Pedido Cancelado com sucesso!!!");
 
 		return "redirect:/pedido/";
 	}
 
 	@GetMapping("/AtualizaStatusPedidoFechado")
-	public String atualizaStatusPedidoFechado(Model model){
+	public String atualizaStatusPedidoFechado(final RedirectAttributes redirectAttributes){
 	
 		Pedido ped = pedidoRepository.getUltimoPedidoAberto();
 		if (ped != null) {
 			ped.setStatus(StatusPedido.FINALIZADO.getTipoStatusNome());
 			pedidoRepository.save(ped);		
-			model.addAttribute("mensagemPedidoFechado", "Pedido Finalizado com Sucesso!!!");
+			redirectAttributes.addFlashAttribute("pedidoFinalizado", "True");			
 		}else{
-			model.addAttribute("mensagemPedidoFechado", "Não foi possível encontrar o Pedido!!!");
+			redirectAttributes.addFlashAttribute("pedidoFinalizado", "False");
 		}
+		
+		
 		return "redirect:/pedido/";
 	}
 

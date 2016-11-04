@@ -50,3 +50,17 @@ used to vertically center elements, may need modification if you're not using de
 .panel-table .panel-body .table-bordered > tbody > tr > td{
   line-height: 34px;
 }
+
+.tamanhoFoto{
+	width: 200px;
+	height: 280px;
+}
+
+.spacePanel{
+	padding-top: 10px;	
+}
+
+.spacePanelButtons{
+	padding-top: 10px;
+	padding-bottom: 10px;	
+}

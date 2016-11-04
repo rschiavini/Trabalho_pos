@@ -5,10 +5,11 @@
 <!DOCTYPE html>
 <html lang="pt-br">
 <head>
+
 <meta charset="utf-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+
 <title>Pedidos</title>
 
 <!-- Bootstrap -->
@@ -26,93 +27,76 @@
 <link
 	href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.4.0/css/font-awesome.min.css"
 	rel='stylesheet' type='text/css'>
+<link href="css/bootstrap.min.css" rel="stylesheet">
+<link href="css/style.css" rel="stylesheet">
 
-<!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
-<!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
-<!--[if lt IE 9]>
-      <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
-      <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
-    <![endif]-->
 </head>
 <body>
 
 
 	<div class="container">
-		<div class="row">
-			<c:out value="${mensagemPedidoFechado}" />
-			<div class="col-md-10 col-md-offset-1">
+		<div class="panel panel-default">
+			<c:if test="${pedidoFinalizado eq 'True'}">
+				<div class="alert alert-success">
+					<strong>Pedido Finalizado com Sucesso!!!</strong>
+				</div>
+			</c:if>
+			<c:if test="${pedidoFinalizado eq 'False'}">
+				<div class="alert alert-danger">
+					<strong>Problemas ao finalizar o Pedido</strong>
+				</div>
+			</c:if>
+			<c:if test="${not empty pedidoCancelado}">
+				<div class="alert alert-success">
+					<strong>${pedidoCancelado}</strong>
+				</div>
+			</c:if>
 
-				<div class="panel panel-default panel-table">
-					<div class="panel-heading">
-						<div class="row">
-							<div class="col col-md-6">
-								<h5 class="he">
-									<sec:authentication property="principal.username" />
-								</h5>
-								<p>
-									Valor Total Pedido:
-									<fmt:formatNumber value="${valorTotal}" type="currency" />									
-								</p>
-							</div>
-							<!-- Button -->
-							<div class="form-horizontal text-right">
-
-								<div class="form-group">
-									<label class="col-md-6 text-right" for="btnFinalizar"></label>
-									<div class="col-md-5">
-										<a href="/pedido/AtualizaStatusPedidoFechado"
-											class="btn btn-success">Finalizar Compra</a>
-									</div>
-								</div>
-
-								<!-- Button -->
-								<div class="form-group">
-									<label class="col-md-6 text-right" for="btnCancelarCompra"></label>
-									<div class="col-md-5">
-										<a href="/pedido/cancelarPedido" class="btn btn-danger">Cancelar
-											Compra</a>
-									</div>
-								</div>
-
-							</div>
-						</div>
+			<div class="panel-heading">
+				<h3 class="panel-title" align="center">Emissão de Pedidos</h3>
+			</div>
+		</div>
+		<div class="panel panel-default">
+			<div class="container-fluid spacePanelButtons">
+				<div class="row">
+					<div class="col-md-8">
+						<span class="label label-default"><sec:authentication
+								property="principal.username" /></span>
 					</div>
-					<!--  		<form class="form-horizontal" action="<c:url value="/pedido/"/>"
-						method="post">-->
-					<div class="panel-body">
-						<table class="table table-striped table-bordered table-list">
-							<thead>
-								<tr>
-									<th class="hidden-xs">Código</th>
-									<th>Nome</th>
-									<th>Valor</th>
-									<th width="50" align="center"><i
-										class="glyphicon glyphicon-shopping-cart"></i></th>
-								</tr>
-							</thead>
-							<tbody>
-								<c:forEach items="${produtos}" var="produto">
-									<tr>
-										<td class="hidden-xs">${produto.codigo}</td>
-										<td>${produto.nome}</td>
-										<td>${produto.valor}</td>
-										<td align="center"><a
-											href="<c:url value="/pedido/adicionarProduto/${produto.codigo}"/>"
-											class="btn btn-default"> <i class="fa fa-cart-plus"></i>
-										</a></td>
-									</tr>
-								</c:forEach>
-							</tbody>
-						</table>
+					<div class="col-md-2">
+						<span class="label label-default">Valor Total Pedido: <fmt:formatNumber
+								value="${valorTotal}" type="currency" /></span>
 					</div>
-					<!-- </form> -->
+					<div class="col-md-2">
+						<a href="/pedido/AtualizaStatusPedidoFechado"
+							class="btn btn-success btn-block" type="button">Finalizar
+							Pedido</a> <a href="/pedido/cancelarPedido"
+							class="btn btn-danger btn-block" type="button">Cancelar
+							Pedido</a>
+					</div>
 				</div>
 			</div>
 		</div>
-	</div>
+		<div class="panel panel-default">
+			<div class="container-fluid">
+				<div class="row text-center">
+					<c:forEach items="${produtos}" var="produto">
+						<div class="col-md-4 spacePanel">
+							<div class="thumbnail">
+								<img class="tamanhoFoto" alt="Livro" src="${produto.foto}">
+								<p align="center">${produto.nome}-
+									<fmt:formatNumber value="${produto.valor}" type="currency" />
+								</p>
+								<a href="/pedido/adicionarProduto/${produto.codigo}"
+									class="btn btn-success" type="button">Comprar</a>
+							</div>
+						</div>
+					</c:forEach>
 
-	<script src="<c:url value="/static/js/jquery-3.1.1.min.js"/>"></script>
-	<script src="<c:url value="/static/js/bootstrap.min.js"/>"></script>
-	<script src="<c:url value="/static/js/jquery-ui.min.js"/>"></script>
+				</div>
+			</div>
+		</div>
+		<div class="panel-footer"></div>
+	</div>
 </body>
 </html>
